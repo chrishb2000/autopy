@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intellectia | Automatización Inteligente y Soluciones con IA</title>
+    <meta name="description" content="Potenciamos tu empresa con flujos de trabajo inteligentes, integrando APIs y CRMs con el poder de la Inteligencia Artificial.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #0052cc;
+            --primary-hover-color: #0041a3;
+            --secondary-color: #f4f5f7;
+            --dark-color: #172b4d;
+            --text-color: #42526e;
+            --light-gray-color: #dfe1e6;
+            --white-color: #ffffff;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: var(--text-color); background-color: var(--white-color); }
+        .container { width: 90%; max-width: 1100px; margin: 0 auto; }
+        section { padding: 80px 0; opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        section.visible { opacity: 1; transform: translateY(0); }
+        h1, h2, h3 { color: var(--dark-color); font-weight: 700; margin-bottom: 20px; }
+        h2 { font-size: 2.5rem; text-align: center; }
+        h3 { font-size: 1.5rem; }
+        p { margin-bottom: 15px; }
+        .text-center { text-align: center; }
+        .section-subtitle { text-align: center; max-width: 700px; margin: 0 auto 50px auto; font-size: 1.1rem; }
+        .btn { display: inline-block; padding: 12px 28px; background-color: var(--primary-color); color: var(--white-color); text-decoration: none; border-radius: 50px; font-weight: 600; transition: background-color 0.3s ease, transform 0.3s ease; border: none; cursor: pointer; }
+        .btn:hover { background-color: var(--primary-hover-color); transform: translateY(-2px); }
+        .main-header { background-color: var(--white-color); padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: var(--box-shadow); }
+        .main-header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8rem; font-weight: 700; color: var(--dark-color); text-decoration: none; }
+        .main-nav ul { list-style: none; display: flex; }
+        .main-nav ul li { margin-left: 30px; }
+        .main-nav ul li a { text-decoration: none; color: var(--text-color); font-weight: 600; transition: color 0.3s ease; }
+        .main-nav ul li a:hover { color: var(--primary-color); }
+        .menu-toggle { display: none; font-size: 1.5rem; background: none; border: none; color: var(--dark-color); cursor: pointer; }
+        #hero { background-color: var(--secondary-color); padding-top: 180px; padding-bottom: 120px; text-align: center; }
+        #hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+        #hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px auto; }
+        #hero .social-proof { margin-top: 20px; font-style: italic; color: #6b778c; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
+        .service-card { background-color: var(--white-color); border: 1px solid var(--light-gray-color); border-radius: var(--border-radius); padding: 30px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: var(--box-shadow); }
+        .service-card .icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; }
+        #why-custom { background-color: var(--secondary-color); }
+        .features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; align-items: flex-start; }
+        .feature-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
+        .feature-item .icon { font-size: 1.5rem; color: var(--primary-color); margin-right: 15px; margin-top: 5px; }
+        #testimonials { background-color: var(--white-color); }
+        .testimonial-card { background: var(--primary-color); color: var(--white-color); padding: 40px; border-radius: var(--border-radius); max-width: 800px; margin: 0 auto; text-align: center; }
+        .testimonial-card blockquote { font-size: 1.2rem; font-style: italic; border: none; margin-bottom: 20px; }
+        .testimonial-card .author { font-weight: 600; }
+        #contact { background-color: var(--dark-color); color: var(--white-color); }
+        #contact h2, #contact p { color: var(--white-color); }
+        .contact-form { max-width: 600px; margin: 0 auto; margin-top: 40px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border-radius: var(--border-radius); border: 1px solid var(--light-gray-color); background: #2b3f61; color: var(--white-color); font-family: 'Poppins', sans-serif; }
+        .main-footer { background-color: #101d36; color: var(--light-gray-color); padding: 40px 0; text-align: center; }
+        .footer-socials a { color: var(--white-color); margin: 0 10px; font-size: 1.5rem; transition: color 0.3s ease; }
+        .footer-socials a:hover { color: var(--primary-color); }
+        @media (max-width: 768px) {
+            h2 { font-size: 2rem; }
+            #hero h1 { font-size: 2.5rem; }
+            .main-nav { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--white-color); box-shadow: var(--box-shadow); }
+            .main-nav.active { display: block; }
+            .main-nav ul { flex-direction: column; padding: 20px; }
+            .main-nav ul li { margin: 10px 0; text-align: center; }
+            .menu-toggle { display: block; }
+            .features-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">Intellectia</a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#services">Servicios IA</a></li>
+                    <li><a href="#why-custom">Por Qué a Medida</a></li>
+                    <li><a href="#testimonials">Casos de Éxito</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Automatización Inteligente con IA</h1>
+                <p>
+                    Llevamos tu negocio al siguiente nivel. Desarrollamos flujos de trabajo a medida que integran Inteligencia Artificial para optimizar procesos, conectar plataformas y generar valor real a partir de tus datos.
+                </p>
+                <a href="#contact" class="btn">Solicita tu Consultoría de IA</a>
+                <p class="social-proof">Impulsando la innovación en empresas de finanzas, logística y software.</p>
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="container">
+                <h2>Nuestras Soluciones de Automatización con IA</h2>
+                <p class="section-subtitle">
+                    Desarrollamos soluciones a medida que integran Inteligencia Artificial para analizar, decidir y actuar de forma autónoma, transformando por completo tus operaciones.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-sync-alt"></i></div>
+                        <h3>Integración de APIs y CRMs con IA</h3>
+                        <p>Conectamos tu CRM (Salesforce, HubSpot) con otras plataformas, enriqueciendo datos y automatizando acciones de venta o soporte con lógica de IA.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-file-invoice-dollar"></i></div>
+                        <h3>Finanzas y Análisis Predictivo</h3>
+                        <p>Automatizamos informes financieros y aplicamos modelos de IA para previsión de ventas, detección de anomalías y optimización de gastos.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Marketing y Ventas Inteligentes</h3>
+                        <p>Creamos flujos que personalizan campañas en tiempo real, califican leads con IA (lead scoring) y analizan el sentimiento del cliente.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-truck-fast"></i></div>
+                        <h3>Logística Optimizada por IA</h3>
+                        <p>Implementamos algoritmos de IA para la optimización de rutas, predicción de la demanda y mantenimiento predictivo de la flota.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-file-alt"></i></div>
+                        <h3>Procesamiento Inteligente de Documentos</h3>
+                        <p>Extraemos y clasificamos datos de facturas, contratos o albaranes de forma automática, sin necesidad de plantillas fijas, usando IA (IDP).</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="icon"><i class="fas fa-users-cog"></i></div>
+                        <h3>RRHH y Selección Inteligente</h3>
+                        <p>Desarrollamos herramientas que analizan y clasifican CVs, identificando a los mejores candidatos mediante el procesamiento de lenguaje natural (NLP).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-custom">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Más Allá de la Automatización Convencional</h2>
+                    <p class="section-subtitle">
+                        Una solución a medida con IA te ofrece un control y una potencia que las plataformas estándar no pueden igualar.
+                    </p>
+                </div>
+                <div class="features-grid">
+                    <div>
+                        <div class="feature-item">
+                            <div class="icon"><i class="fas fa-brain"></i></div>
+                            <div>
+                                <h3>Inteligencia Real, no solo Reglas</h3>
+                                <p>Nuestras soluciones aprenden de tus datos para adaptarse y tomar decisiones complejas, superando las limitaciones de la automatización "si-esto-entonces-aquello".</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="icon"><i class="fas fa-expand-arrows-alt"></i></div>
+                            <div>
+                                <h3>Escalabilidad Ilimitada</h3>
+                                <p>Una solución que crece al ritmo de tu negocio sin incrementar los costes por "tareas" o "usuarios".</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="feature-item">
+                            <div class="icon"><i class="fas fa-cogs"></i></div>
+                            <div>
+                                <h3>Flexibilidad Total de Integración</h3>
+                                <p>Nos conectamos a cualquier API, base de datos o sistema legacy, creando un ecosistema tecnológico unificado y sin fisuras.</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                            <div>
+                                <h3>Seguridad y Propiedad del Código</h3>
+                                <p>El código y los modelos de IA se ejecutan en tu infraestructura. Tus datos y tu ventaja competitiva te pertenecen por completo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials">
+            <div class="container">
+                <h2>Historias de Éxito</h2>
+                <div class="testimonial-card">
+                    <blockquote>
+                        "La integración con IA para calificar nuestros leads ha incrementado la eficiencia de nuestro equipo de ventas en un 40%. La capacidad de priorizar ha cambiado las reglas del juego."
+                    </blockquote>
+                    <p class="author">- CEO, Startup SaaS B2B</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container text-center">
+                <h2>¿Preparado para la Transformación Inteligente?</h2>
+                <p class="section-subtitle">
+                    Cuéntanos tu desafío. Nuestro equipo de expertos analizará tu caso y te propondrá una solución de IA a medida. La primera consultoría es gratuita.
+                </p>
+                <form id="contact-form" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Tu Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Tu Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="5" placeholder="Describe el proceso que quieres potenciar con Inteligencia Artificial..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Solicitar mi Análisis Gratuito</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-socials">
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2025 Intellectia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            menuToggle.addEventListener('click', () => { mainNav.classList.toggle('active'); });
+            document.querySelectorAll('.main-nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    mainNav.classList.remove('active');
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                    alert('Por favor, completa todos los campos.');
+                    return;
+                }
+                alert(`Gracias, ${name}. Hemos recibido tu mensaje y nuestro equipo de IA te contactará pronto.`);
+                contactForm.reset();
+            });
+            const sections = document.querySelectorAll('section');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => { observer.observe(section); });
+        });
+    </script>
+</body>
+</html>
